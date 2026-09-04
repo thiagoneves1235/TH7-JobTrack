@@ -12,6 +12,7 @@
 - Configurações com preferências, notificações e exportação
 - Interface azul e branca, responsiva para desktop, tablet e celular
 - Persistência local imediata via `localStorage`
+- Login, cadastro, sessão persistente e logout para o workspace
 
 ## Arquitetura
 
@@ -20,6 +21,7 @@ index.html              # Shell da aplicação e seis views roteadas por hash
 styles.css              # Design system azul, componentes e breakpoints
 mobile.css              # Ajustes dedicados para telas de até 650px
 polish.css              # Camada visual premium, microinterações e profundidade
+auth.css                # Tela de autenticação e estados mobile
 app.js                  # Roteamento, interações, métricas e chatbot
 api.js                  # Repositório local que abstrai a persistência da UI
 backend/server.js       # API HTTP nativa sem dependências externas
@@ -41,6 +43,10 @@ Depois acesse `http://localhost:3000`. Endpoints disponíveis:
 - `DELETE /api/applications/:id`
 
 O banco de dados está modelado em `database/schema.sql`, com usuários, candidaturas, entrevistas e tarefas. A demo usa um adaptador local para continuar simples de executar; a API pode ser conectada ao PostgreSQL substituindo a camada de persistência do servidor.
+
+## Autenticação
+
+A tela de login e cadastro funciona localmente para demonstrar o fluxo completo de produto. Usuários e sessão são armazenados no navegador para a demo. Em produção, as credenciais devem ser tratadas no backend com hash de senha, sessão segura ou JWT, validação de e-mail e recuperação de acesso.
 
 ## Validação
 

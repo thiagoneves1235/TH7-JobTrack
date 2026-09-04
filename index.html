@@ -11,9 +11,14 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mobile.css">
   <link rel="stylesheet" href="polish.css">
+  <link rel="stylesheet" href="auth.css">
 </head>
 <body>
-  <div class="app-shell">
+  <section class="auth-shell" id="auth-shell" aria-label="Autenticação">
+    <div class="auth-visual"><div class="auth-brand"><span class="brand-mark">T7</span><span>TH7 <b>jobtrack</b></span></div><div class="auth-quote"><span>TH7 / CAREER OS</span><h1>O próximo passo da sua carreira começa aqui.</h1><p>Organize sua busca, prepare suas conversas e acompanhe sua evolução em um só lugar.</p><div class="auth-proof"><strong>78</strong><span>score médio de perfil<br>entre usuários ativos</span></div></div><div class="auth-visual-footer">Construído para carreiras que não ficam paradas.</div></div>
+    <div class="auth-card"><div class="auth-mobile-brand"><span class="brand-mark">T7</span><span>TH7 <b>jobtrack</b></span></div><div class="auth-heading"><span class="eyebrow">BEM-VINDA DE VOLTA</span><h2 id="auth-title">Acesse seu workspace</h2><p id="auth-subtitle">Continue de onde você parou.</p></div><div class="auth-tabs"><button class="auth-tab active" data-auth-tab="login">Entrar</button><button class="auth-tab" data-auth-tab="register">Criar conta</button></div><form id="login-form" class="auth-form"><label>E-mail<input type="email" name="email" required autocomplete="email" placeholder="voce@exemplo.com"></label><label>Senha<input type="password" name="password" required autocomplete="current-password" placeholder="Digite sua senha"></label><div class="auth-options"><label class="remember"><input type="checkbox" checked><span></span> Lembrar de mim</label><button type="button" class="link-button" id="forgot-password">Esqueci minha senha</button></div><button class="primary-button auth-submit" type="submit">Entrar no workspace <span>→</span></button></form><form id="register-form" class="auth-form" hidden><label>Seu nome<input type="text" name="name" required autocomplete="name" placeholder="Como podemos chamar você?"></label><label>E-mail<input type="email" name="email" required autocomplete="email" placeholder="voce@exemplo.com"></label><label>Senha<input type="password" name="password" minlength="6" required autocomplete="new-password" placeholder="Mínimo de 6 caracteres"></label><label class="terms"><input type="checkbox" required> <span>Concordo com os termos de uso do TH7 JobTrack.</span></label><button class="primary-button auth-submit" type="submit">Criar meu workspace <span>→</span></button></form><p class="auth-message" id="auth-message" role="alert"></p><div class="auth-demo">Demo local <span>·</span> seus dados ficam salvos neste navegador</div></div>
+  </section>
+  <div class="app-shell auth-locked">
     <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
       <div class="brand"><span class="brand-mark">T7</span><span>TH7 <b>jobtrack</b></span></div>
       <div class="workspace-switcher"><span class="workspace-avatar">MC</span><div><strong>Marina Costa</strong><small>Workspace pessoal</small></div><span class="chevron">⌄</span></div>
@@ -35,7 +40,7 @@
       <header class="topbar">
         <button class="mobile-menu" id="mobile-menu" aria-label="Abrir menu">☰</button>
         <div class="breadcrumb"><span>TH7 JobTrack</span><b>/</b><strong id="page-title">Visão geral</strong></div>
-        <div class="topbar-actions"><button class="icon-button" id="notifications-button" aria-label="Notificações">♧<i></i></button><div class="avatar">MC</div><span class="topbar-name">Marina Costa</span></div>
+        <div class="topbar-actions"><button class="icon-button" id="notifications-button" aria-label="Notificações">♧<i></i></button><div class="avatar">MC</div><span class="topbar-name">Marina Costa</span><button class="logout-button" id="logout-button">Sair</button></div>
       </header>
 
       <div class="views">

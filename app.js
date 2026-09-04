@@ -10,6 +10,52 @@ function showToast(message) {
   window.setTimeout(() => toast.classList.remove("show"), 2400);
 }
 
+function setAuthMessage(message = "") { $("#auth-message").textContent = message; }
+
+function unlockApp(user) {
+  localStorage.setItem("th7-jobtrack-session", JSON.stringify(user));
+  $("#auth-shell").hidden = true;
+  $(".app-shell").classList.remove("auth-locked");
+  document.querySelectorAll(".topbar-name, .workspace-switcher strong").forEach((element) => { element.textContent = user.name; });
+  const initials = user.name.split(" ").map((part) => part[0]).slice(0, 2).join("").toUpperCase();
+  document.querySelectorAll(".avatar, .workspace-avatar").forEach((element) => { element.textContent = initials; });
+  setAuthMessage();
+}
+
+function initAuth() {
+  const session = JSON.parse(localStorage.getItem("th7-jobtrack-session") || "null");
+  if (session) unlockApp(session);
+  document.querySelectorAll("[data-auth-tab]").forEach((tab) => tab.addEventListener("click", () => {
+    const register = tab.dataset.authTab === "register";
+    document.querySelectorAll(".auth-tab").forEach((item) => item.classList.toggle("active", item === tab));
+    $("#login-form").hidden = register;
+    $("#register-form").hidden = !register;
+    $("#auth-title").textContent = register ? "Crie seu workspace" : "Acesse seu workspace";
+    $("#auth-subtitle").textContent = register ? "Sua próxima oportunidade começa com organização." : "Continue de onde você parou.";
+    setAuthMessage();
+  }));
+  $("#login-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const users = JSON.parse(localStorage.getItem("th7-jobtrack-users") || "[]");
+    const user = users.find((item) => item.email === data.get("email").toLowerCase() && item.password === data.get("password"));
+    if (!user) return setAuthMessage("E-mail ou senha incorretos. Confira seus dados e tente novamente.");
+    unlockApp(user);
+  });
+  $("#register-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const users = JSON.parse(localStorage.getItem("th7-jobtrack-users") || "[]");
+    const email = data.get("email").toLowerCase();
+    if (users.some((item) => item.email === email)) return setAuthMessage("Este e-mail já possui um workspace.");
+    const user = { name: data.get("name"), email, password: data.get("password") };
+    localStorage.setItem("th7-jobtrack-users", JSON.stringify([...users, user]));
+    unlockApp(user);
+    event.currentTarget.reset();
+  });
+  $("#forgot-password").addEventListener("click", () => setAuthMessage("Em uma versão conectada, enviaremos um link de recuperação para seu e-mail."));
+}
+
 function downloadData() {
   const payload = { exportedAt: new Date().toISOString(), applications: JobTrackAPI.list() };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -110,6 +156,12 @@ $("#dashboard-search").addEventListener("input", (event) => renderApplications(e
 $("#applications-search").addEventListener("input", (event) => renderApplications(event.target.value));
 $("#mobile-menu").addEventListener("click", () => $("#sidebar").classList.toggle("open"));
 $("#notifications-button").addEventListener("click", () => showToast("Você não tem novas notificações"));
+$("#logout-button").addEventListener("click", () => {
+  localStorage.removeItem("th7-jobtrack-session");
+  $(".app-shell").classList.add("auth-locked");
+  $("#auth-shell").hidden = false;
+  showToast("Sessão encerrada");
+});
 $("#save-profile").addEventListener("click", () => {
   const fields = [...document.querySelectorAll(".profile-fields input, .profile-fields textarea")].map((field) => field.value);
   localStorage.setItem("th7-jobtrack-profile", JSON.stringify(fields));
@@ -135,4 +187,5 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "/" && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) { event.preventDefault(); $("#dashboard-search").focus(); }
 });
 restoreTasks();
+initAuth();
 setRoute();
