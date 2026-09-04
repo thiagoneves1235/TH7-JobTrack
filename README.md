@@ -2,7 +2,11 @@
 
 **TH7 JobTrack** é um Career OS responsivo para organizar a busca por oportunidades de tecnologia. O projeto demonstra uma experiência de produto completa: dashboard, pipeline de candidaturas, preparação de entrevistas, assistente de carreira, perfil profissional, configurações e API REST.
 
-**Demo online:** https://thiagoneves1235.github.io/TH7-JobTrack/
+## Demo online
+
+[**Abrir TH7 JobTrack no navegador →**](https://thiagoneves1235.github.io/TH7-JobTrack/)
+
+O código-fonte fica neste repositório e cada atualização na branch `main` publica automaticamente uma nova versão pelo GitHub Pages.
 
 ## Produto
 
