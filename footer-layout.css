@@ -1,8 +1,9 @@
 .page-footer {
   width: min(100%, 980px);
   margin: 8px auto 0;
-  grid-template-columns: minmax(0, 1.1fr) auto minmax(0, 1fr) auto;
-  gap: 24px;
+  padding-inline: 20px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+  gap: 18px;
 }
 
 .footer-brand,
@@ -15,6 +16,7 @@
 @media (max-width: 1000px) {
   .page-footer {
     width: 100%;
+    padding-inline: 18px;
     gap: 16px 20px;
   }
 }
@@ -23,5 +25,6 @@
   .page-footer {
     width: 100%;
     margin-top: 4px;
+    padding-inline: 18px;
   }
 }
