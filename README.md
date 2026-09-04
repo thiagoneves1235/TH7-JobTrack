@@ -22,6 +22,7 @@ styles.css              # Design system azul, componentes e breakpoints
 mobile.css              # Ajustes dedicados para telas de até 650px
 polish.css              # Camada visual premium, microinterações e profundidade
 auth.css                # Tela de autenticação e estados mobile
+auth-fix.css            # Estados exclusivos entre login e cadastro
 app.js                  # Roteamento, interações, métricas e chatbot
 api.js                  # Repositório local que abstrai a persistência da UI
 backend/server.js       # API HTTP nativa sem dependências externas
