@@ -41,6 +41,13 @@ function applyNaturalCopy() {
   if (firstMessage) firstMessage.textContent = "Olá, Marina. Posso ajudar a revisar uma candidatura, preparar uma entrevista ou organizar os próximos passos da sua busca.";
 }
 
+function mountDashboardBrief() {
+  const welcome = $(".welcome-row");
+  if (!welcome || $("#dashboard-brief")) return;
+  welcome.insertAdjacentHTML("afterend", '<div class="dashboard-brief" id="dashboard-brief"><div class="brief-main"><span class="brief-marker">◷</span><div><strong>Prioridade de hoje</strong><span>Prepare a conversa técnica da Nubank · terça, 14:30</span></div></div><button class="brief-link" data-route-link="interviews">Abrir preparação →</button></div>');
+  $("[data-route-link=interviews]").addEventListener("click", () => { window.location.hash = "#interviews"; });
+}
+
 function unlockApp(user) {
   localStorage.setItem("th7-jobtrack-session", JSON.stringify(user));
   $("#auth-shell").hidden = true;
@@ -48,6 +55,8 @@ function unlockApp(user) {
   document.querySelectorAll(".topbar-name, .workspace-switcher strong").forEach((element) => { element.textContent = user.name; });
   const initials = user.name.split(" ").map((part) => part[0]).slice(0, 2).join("").toUpperCase();
   document.querySelectorAll(".avatar, .workspace-avatar").forEach((element) => { element.textContent = initials; });
+  const firstName = user.name.trim().split(" ")[0];
+  $(".welcome-row h1").innerHTML = `Olá, ${firstName}<span class="accent">.</span>`;
   setAuthMessage();
 }
 
@@ -150,6 +159,11 @@ function setRoute() {
   document.querySelectorAll(".nav-link").forEach((link) => link.classList.toggle("active", link.dataset.route === current));
   $("#page-title").textContent = titles[current];
   $("#sidebar").classList.remove("open");
+  const session = JSON.parse(localStorage.getItem("th7-jobtrack-session") || "null");
+  if (session) {
+    const firstName = session.name.trim().split(" ")[0];
+    $(".welcome-row h1").innerHTML = `Olá, ${firstName}<span class="accent">.</span>`;
+  }
   renderApplications();
 }
 
@@ -230,4 +244,5 @@ document.addEventListener("keydown", (event) => {
 restoreTasks();
 initAuth();
 applyNaturalCopy();
+mountDashboardBrief();
 setRoute();
