@@ -19,6 +19,7 @@
 index.html              # Shell da aplicação e seis views roteadas por hash
 styles.css              # Design system azul, componentes e breakpoints
 mobile.css              # Ajustes dedicados para telas de até 650px
+polish.css              # Camada visual premium, microinterações e profundidade
 app.js                  # Roteamento, interações, métricas e chatbot
 api.js                  # Repositório local que abstrai a persistência da UI
 backend/server.js       # API HTTP nativa sem dependências externas
