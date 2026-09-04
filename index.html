@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="responsive-fix.css">
   <link rel="stylesheet" href="accessibility.css">
   <link rel="stylesheet" href="guest.css">
+  <link rel="stylesheet" href="footer-fix.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
@@ -67,13 +68,29 @@
         <section class="view" data-view="profile"><div class="page-header"><div><p class="eyebrow">SUA MARCA PROFISSIONAL</p><h1>Meu perfil</h1><p class="subtitle">Apresente o melhor da sua trajetória para as oportunidades certas.</p></div><button class="primary-button" id="save-profile"><span>✓</span> Salvar alterações</button></div><div class="profile-layout"><section class="panel profile-card"><div class="profile-cover"></div><div class="profile-main"><div class="profile-avatar">MC</div><div><h2>Marina Costa</h2><p>Frontend Developer · São Paulo, Brasil</p><span class="available"><i></i> Disponível para oportunidades</span></div><button class="edit-button">Editar foto</button></div><div class="profile-fields"><label>Nome completo<input value="Marina Costa"></label><label>Headline<input value="Frontend Developer | React & TypeScript"></label><label>Sobre você<textarea>Desenvolvedora frontend apaixonada por criar produtos digitais simples, rápidos e acessíveis.</textarea></label></div></section><aside class="panel score-card"><span class="eyebrow">PROFILE SCORE</span><div class="score-circle"><strong>78</strong><span>/100</span></div><h2>Perfil forte</h2><p>Adicione 2 projetos com resultados para aumentar sua visibilidade.</p><button class="outline-button">Ver recomendações <span>→</span></button></aside></div></section>
 
         <section class="view" data-view="settings"><div class="page-header"><div><p class="eyebrow">CONTROLE DA CONTA</p><h1>Configurações</h1><p class="subtitle">Ajuste sua experiência no TH7 JobTrack.</p></div></div><section class="panel settings-panel"><div class="settings-nav"><button class="setting-tab active">Preferências</button><button class="setting-tab">Notificações</button><button class="setting-tab">Plano e cobrança</button></div><div class="settings-content"><h2>Preferências gerais</h2><p>Escolha como o JobTrack trabalha para você.</p><label class="setting-toggle"><span><strong>Resumo semanal por e-mail</strong><small>Receba seus avanços toda segunda-feira.</small></span><input type="checkbox" checked><i></i></label><label class="setting-toggle"><span><strong>Lembretes de entrevista</strong><small>Seja avisada 24 horas antes de cada conversa.</small></span><input type="checkbox" checked><i></i></label><label class="setting-toggle"><span><strong>Modo compacto</strong><small>Mostre mais candidaturas em cada tela.</small></span><input type="checkbox"><i></i></label><div class="danger-zone"><h3>Zona de atenção</h3><p>Exporte seus dados ou limpe o workspace local.</p><button class="danger-button" data-toast="Seus dados estão seguros no navegador">Exportar meus dados</button></div></div></section></section>
-+      </div>
-+      <footer class="page-footer"><span>TH7 JobTrack <b>·</b> seu sistema operacional de carreira</span><span>v2.0 <b>·</b> Dados criptografados localmente</span></footer>
-+    </main>
-+  </div>
-+
-+  <dialog class="modal" id="application-modal"><form method="dialog" id="application-form"><div class="modal-head"><div><span class="eyebrow">NOVA OPORTUNIDADE</span><h2>Adicionar candidatura</h2></div><button class="close-button" value="cancel" aria-label="Fechar">×</button></div><label>Empresa<input name="company" required placeholder="Ex: Nubank"></label><label>Cargo<input name="role" required placeholder="Ex: Frontend Engineer"></label><div class="form-row"><label>Local<input name="location" required placeholder="Remoto"></label><label>Status<select name="status"><option value="pending">Em análise</option><option value="interview">Entrevista</option><option value="offer">Oferta</option></select></label></div><label>Link da vaga <span class="optional">opcional</span><input name="url" type="url" placeholder="https://..."></label><button class="primary-button submit-button" value="default">Salvar candidatura <span>→</span></button></form></dialog>
-+  <div class="toast" id="toast" role="status"></div>
-+  <script src="api.js"></script><script src="app.js"></script>
-+</body>
-+</html>
+      </div>
+      <footer class="page-footer">
+        <div class="footer-brand">
+          <span class="footer-mark">T7</span>
+          <div><strong>TH7 JobTrack</strong><span class="footer-muted">Career OS para organizar sua busca</span></div>
+        </div>
+        <nav class="footer-links" aria-label="Links do rodapé">
+          <span class="footer-label">NAVEGAR</span>
+          <a href="#dashboard">Início</a>
+          <a href="#applications">Candidaturas</a>
+          <a href="#profile">Meu perfil</a>
+        </nav>
+        <div class="footer-github">
+          <span class="footer-label">CÓDIGO ABERTO NO GITHUB</span>
+          <div><a href="https://github.com/thiagoneves1235/TH7-JobTrack" target="_blank" rel="noopener noreferrer">TH7-JobTrack <span>↗</span></a><a class="github-profile" href="https://github.com/thiagoneves1235" target="_blank" rel="noopener noreferrer">@thiagoneves1235</a></div>
+        </div>
+        <div class="footer-meta"><a href="https://thiagoneves1235.github.io/TH7-JobTrack/" target="_blank" rel="noopener noreferrer">Ver demo online <span>↗</span></a><span>v2.0 <b>·</b> salvo neste navegador</span></div>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="modal" id="application-modal"><form method="dialog" id="application-form"><div class="modal-head"><div><span class="eyebrow">NOVA OPORTUNIDADE</span><h2>Adicionar candidatura</h2></div><button class="close-button" value="cancel" aria-label="Fechar">×</button></div><label>Empresa<input name="company" required placeholder="Ex: Nubank"></label><label>Cargo<input name="role" required placeholder="Ex: Frontend Engineer"></label><div class="form-row"><label>Local<input name="location" required placeholder="Remoto"></label><label>Status<select name="status"><option value="pending">Em análise</option><option value="interview">Entrevista</option><option value="offer">Oferta</option></select></label></div><label>Link da vaga <span class="optional">opcional</span><input name="url" type="url" placeholder="https://..."></label><button class="primary-button submit-button" value="default">Salvar candidatura <span>→</span></button></form></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="api.js"></script><script src="app.js"></script>
+</body>
+</html>
