@@ -19,6 +19,7 @@ O código-fonte fica neste repositório e cada atualização na branch `main` pu
 - Interface azul e branca, responsiva para desktop, tablet e celular
 - Persistência local imediata via `localStorage`
 - Login, cadastro, sessão persistente e logout para o workspace
+- Modo visitante para testar o produto sem criar conta
 
 ## Arquitetura
 
@@ -33,6 +34,7 @@ notifications.css       # Painel de notificações responsivo
 dashboard-polish.css    # Destaque de prioridade e contexto da agenda
 responsive-fix.css      # Correções finais de fluxo e posicionamento mobile
 accessibility.css       # Foco de teclado, skip link e movimento reduzido
+guest.css               # Entrada de visitante na autenticação
 app.js                  # Roteamento, interações, métricas e chatbot
 api.js                  # Repositório local que abstrai a persistência da UI
 backend/server.js       # API HTTP nativa sem dependências externas
@@ -41,7 +43,9 @@ package.json            # Script de inicialização do backend
 .github/workflows/       # Publicação automática no GitHub Pages
 ```
 
-A interface funciona abrindo o `index.html` diretamente. Para executar a API e servir o frontend pelo mesmo processo:
+A interface funciona abrindo o `index.html` diretamente. Cada conta e o modo visitante possuem dados separados no navegador. Para sincronizar dados entre dispositivos, é necessário hospedar a API e trocar o adaptador local por chamadas autenticadas ao backend.
+
+Para executar a API e servir o frontend pelo mesmo processo:
 
 ```bash
 npm start

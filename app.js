@@ -92,6 +92,7 @@ function initAuth() {
     event.currentTarget.reset();
   });
   $("#forgot-password").addEventListener("click", () => setAuthMessage("Em uma versão conectada, enviaremos um link de recuperação para seu e-mail."));
+  $("#guest-access").addEventListener("click", () => unlockApp({ name: "Visitante", email: "guest" }));
 }
 
 function downloadData() {
