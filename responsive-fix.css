@@ -1,7 +1,9 @@
- .views::before { inset: 0; }
+.views::before { inset: 0; }
+.topbar { height: 64px; }
 
 @media (max-width: 650px) {
   .sidebar { position: fixed; inset: 0 auto 0 0; width: 270px; height: 100vh; transform: translateX(-100%); }
   .sidebar.open { transform: none; }
   .main-content { width: 100%; }
+  .topbar { height: 62px; }
 }
