@@ -1,0 +1,55 @@
+@media (max-width: 1000px) {
+  .sidebar { width: 215px; }
+  .topbar, .views { padding-left: 3%; padding-right: 3%; }
+  .page-footer { padding-left: 3%; padding-right: 3%; }
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid, .interview-layout, .assistant-layout, .profile-layout { grid-template-columns: 1fr; }
+  .dashboard-side { grid-template-columns: 1fr 1fr; }
+  .settings-panel { grid-template-columns: 160px 1fr; }
+}
+
+@media (max-width: 650px) {
+  .app-shell { display: block; }
+  .sidebar { position: fixed; z-index: 5; inset: 0 auto 0 0; width: 270px; transform: translateX(-100%); transition: .2s; box-shadow: 8px 0 24px #092d5540; }
+  .sidebar.open { transform: none; }
+  .mobile-menu { display: block; }
+  .topbar { height: 62px; padding: 0 18px; }
+  .breadcrumb span, .breadcrumb b, .topbar-name { display: none; }
+  .views { padding: 0 18px; }
+  .welcome-row, .page-header { align-items: start; flex-direction: column; gap: 20px; padding: 30px 0 23px; }
+  .welcome-row h1, .page-header h1 { font-size: 29px; }
+  .welcome-row .primary-button, .page-header .primary-button, .page-header .secondary-button { width: 100%; justify-content: center; }
+  .metrics { gap: 8px; }
+  .metric-card { min-height: 135px; padding: 14px; }
+  .metric-card strong { margin-top: 14px; font-size: 28px; }
+  .dashboard-grid, .dashboard-side { grid-template-columns: 1fr; }
+  .applications-panel, .full-panel { padding: 18px 14px 5px; }
+  .toolbar { align-items: stretch; flex-direction: column; margin: 20px 0 10px; }
+  .search-box { flex-basis: auto; }
+  .filter-tabs { justify-content: space-between; gap: 0; }
+  .filter-tab { padding: 7px 2px; }
+  .pipeline-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .pipeline-stats div { padding: 13px; }
+  .pipeline-stats strong { font-size: 22px; }
+  .full-panel .section-heading { align-items: start; gap: 12px; flex-direction: column; }
+  .search-box.compact { width: 100%; }
+  .interview-list, .prep-card, .chat-panel, .ai-context, .profile-fields, .score-card { padding: 18px; }
+  .interview-item { gap: 9px; }
+  .interview-info span { font-size: 10px; }
+  .chat-panel { min-height: 580px; }
+  .message { max-width: 90%; }
+  .chat-suggestions { padding: 0 14px 12px; }
+  .profile-main { padding: 0 15px 17px; gap: 9px; }
+  .profile-avatar { width: 57px; height: 57px; }
+  .profile-main h2 { font-size: 15px; }
+  .edit-button { font-size: 9px; padding: 7px; }
+  .settings-panel { display: block; }
+  .settings-nav { display: flex; overflow-x: auto; padding: 0; }
+  .setting-tab { white-space: nowrap; width: auto; padding: 14px; }
+  .setting-tab.active { border-right: 0; border-bottom: 2px solid var(--blue); }
+  .settings-content { padding: 23px 18px; }
+  .page-footer { gap: 8px; flex-direction: column; padding: 24px 18px; }
+  .page-footer span:last-child { display: none; }
+  .modal { width: calc(100% - 24px); }
+  .form-row { grid-template-columns: 1fr; }
+}

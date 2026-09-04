@@ -1,31 +1,57 @@
-# JobTrack
+# TH7 JobTrack
 
-Um dashboard de acompanhamento de candidaturas, criado para demonstrar uma experiência de produto completa em um projeto pequeno: estado local, filtros, busca, formulário, feedback visual e layout responsivo.
+**TH7 JobTrack** é um Career OS responsivo para organizar a busca por oportunidades de tecnologia. O projeto demonstra uma experiência de produto completa: dashboard, pipeline de candidaturas, preparação de entrevistas, assistente de carreira, perfil profissional, configurações e API REST.
 
-## O que demonstra
+## Produto
 
-- HTML semântico e acessível, com `dialog`, labels e estados vazios
-- CSS responsivo com uma linguagem visual própria, sem framework de UI
-- JavaScript modular por comportamento: métricas, filtros, busca, tarefas e persistência em `localStorage`
-- Uma interface orientada a uma rotina real, em vez de uma landing page estática
+- Dashboard com métricas, meta semanal e próximas tarefas
+- Pipeline completo com busca, filtros, criação e remoção de candidaturas
+- Agenda de entrevistas com checklist de preparação
+- Chatbot **TH7 Copilot** com sugestões e respostas contextuais simuladas
+- Perfil profissional com score e edição de dados
+- Configurações com preferências, notificações e exportação
+- Interface azul e branca, responsiva para desktop, tablet e celular
+- Persistência local imediata via `localStorage`
 
-## Como executar
-
-Não há build ou dependências. Abra `index.html` no navegador ou use a extensão Live Server no VS Code.
-
-## Estrutura
+## Arquitetura
 
 ```text
-index.html   # Estrutura da aplicação e modal de nova candidatura
-styles.css   # Design system, layout responsivo e componentes
-app.js       # Dados, filtros, ações e persistência local
+index.html              # Shell da aplicação e seis views roteadas por hash
+styles.css              # Design system azul, componentes e breakpoints
+mobile.css              # Ajustes dedicados para telas de até 650px
+app.js                  # Roteamento, interações, métricas e chatbot
+api.js                  # Repositório local que abstrai a persistência da UI
+backend/server.js       # API HTTP nativa sem dependências externas
+database/schema.sql     # Modelo PostgreSQL para produção
+package.json            # Script de inicialização do backend
 ```
 
-## Próximas ideias
+A interface funciona abrindo o `index.html` diretamente. Para executar a API e servir o frontend pelo mesmo processo:
 
-- Sincronizar candidaturas com uma API ou Supabase
-- Adicionar drag-and-drop entre etapas do processo
-- Exportar um resumo semanal em PDF
+```bash
+npm start
+```
+
+Depois acesse `http://localhost:3000`. Endpoints disponíveis:
+
+- `GET /api/health`
+- `GET /api/applications`
+- `POST /api/applications`
+- `DELETE /api/applications/:id`
+
+O banco de dados está modelado em `database/schema.sql`, com usuários, candidaturas, entrevistas e tarefas. A demo usa um adaptador local para continuar simples de executar; a API pode ser conectada ao PostgreSQL substituindo a camada de persistência do servidor.
+
+## Validação
+
+O projeto foi validado com o analisador do VS Code. O navegador pode executar a versão estática sem instalação. O comando `npm start` requer Node.js 18 ou superior.
+
+## Próximas evoluções
+
+- Autenticação com sessões ou JWT
+- Conectar `api.js` aos endpoints REST
+- Integração real com PostgreSQL e migrations
+- Modelo de linguagem real no TH7 Copilot
+- Drag-and-drop entre etapas do pipeline
 
 ## Licença
 
