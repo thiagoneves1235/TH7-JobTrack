@@ -32,6 +32,7 @@ auth-fix.css            # Estados exclusivos entre login e cadastro
 notifications.css       # Painel de notificações responsivo
 dashboard-polish.css    # Destaque de prioridade e contexto da agenda
 responsive-fix.css      # Correções finais de fluxo e posicionamento mobile
+accessibility.css       # Foco de teclado, skip link e movimento reduzido
 app.js                  # Roteamento, interações, métricas e chatbot
 api.js                  # Repositório local que abstrai a persistência da UI
 backend/server.js       # API HTTP nativa sem dependências externas
