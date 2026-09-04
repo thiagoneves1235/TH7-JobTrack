@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JobTrack: acompanhe sua busca por oportunidades de tecnologia com clareza.">
+  <title>JobTrack | Seu painel de carreira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <div class="brand"><span class="brand-mark">J</span><span>jobtrack</span></div>
+      <div class="profile-mini">
+        <div class="avatar">MC</div>
+        <div><strong>Marina Costa</strong><span>Frontend developer</span></div>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link active" href="#dashboard"><span class="nav-icon">▦</span>Visão geral</a>
+        <a class="nav-link" href="#applications"><span class="nav-icon">↗</span>Candidaturas <b id="nav-count">6</b></a>
+        <a class="nav-link" href="#focus"><span class="nav-icon">⌁</span>Foco da semana</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="note-kicker">DICA DE HOJE</span>
+        <p>Personalize seu resumo para cada vaga. Pequenos ajustes aumentam a chance de passar pelo filtro inicial.</p>
+        <button class="text-button" id="tip-button">Entendi <span>→</span></button>
+      </div>
+      <div class="sidebar-footer"><span class="status-dot"></span> Dados salvos localmente</div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">J</span><span>jobtrack</span></div>
+        <div class="topbar-actions"><span class="last-sync">Atualizado agora</span><button class="icon-button" aria-label="Notificações">♧<i></i></button><div class="avatar small">MC</div></div>
+      </header>
+
+      <section class="welcome-row">
+        <div><p class="eyebrow">SEXTA-FEIRA, 04 DE SETEMBRO</p><h1>Olá, Marina<span class="accent">.</span></h1><p class="subtitle">Seu próximo passo começa com clareza.</p></div>
+        <button class="primary-button" id="open-modal"><span>＋</span> Nova candidatura</button>
+      </section>
+
+      <section class="metrics" aria-label="Resumo da busca">
+        <article class="metric-card featured"><div class="metric-top"><span class="metric-label">EM PROCESSO</span><span class="metric-icon">↗</span></div><strong id="process-count">3</strong><p><span class="up">↑ 20%</span> vs. semana passada</p><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="metric-card"><div class="metric-top"><span class="metric-label">ENTREVISTAS</span><span class="metric-icon muted">◉</span></div><strong id="interview-count">2</strong><p><span class="up">↑ 1</span> nos últimos 7 dias</p></article>
+        <article class="metric-card"><div class="metric-top"><span class="metric-label">TAXA DE RESPOSTA</span><span class="metric-icon muted">%</span></div><strong id="response-rate">42%</strong><p><span class="up">↑ 8%</span> acima da média</p></article>
+        <article class="metric-card"><div class="metric-top"><span class="metric-label">DIAS EM BUSCA</span><span class="metric-icon muted">◷</span></div><strong>28</strong><p><span class="neutral">Meta: 45 dias</span></p></article>
+      </section>
+
+      <div class="content-grid">
+        <section class="applications-panel" id="applications">
+          <div class="section-heading"><div><h2>Candidaturas recentes</h2><p>Acompanhe cada oportunidade de perto.</p></div><a href="#applications" id="view-all">Ver todas <span>→</span></a></div>
+          <div class="toolbar"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Buscar empresa ou cargo" aria-label="Buscar empresa ou cargo"></label><div class="filter-tabs" role="tablist"><button class="filter-tab active" data-filter="all">Todas</button><button class="filter-tab" data-filter="interview">Entrevistas</button><button class="filter-tab" data-filter="pending">Em análise</button></div></div>
+          <div class="table-wrap"><table><thead><tr><th>EMPRESA / CARGO</th><th>LOCAL</th><th>STATUS</th><th>DATA</th><th></th></tr></thead><tbody id="applications-list"></tbody></table><div class="empty-state" id="empty-state" hidden>Nenhuma candidatura encontrada.<button class="text-button" id="clear-filter">Limpar filtros</button></div></div>
+        </section>
+
+        <aside class="right-column" id="focus">
+          <section class="focus-card"><div class="focus-head"><div><span class="eyebrow">SEU FOCO</span><h2>Meta semanal</h2></div><span class="target-icon">✦</span></div><div class="progress-ring"><div><strong id="progress-value">7</strong><span>de 10</span></div></div><p>Você está a <b>3 candidaturas</b> de alcançar sua meta.</p><button class="outline-button" id="focus-button">Ver plano da semana <span>→</span></button></section>
+          <section class="activity-card"><div class="section-heading"><div><h2>Próximos passos</h2><p>Para manter o ritmo</p></div><span class="check-count">2/4</span></div><ul class="task-list"><li><button class="check-button" aria-label="Marcar tarefa"></button><span>Revisar portfólio</span><small>Hoje</small></li><li><button class="check-button" aria-label="Marcar tarefa"></button><span>Responder recrutador da Nubank</span><small>Hoje</small></li><li><button class="check-button" aria-label="Marcar tarefa"></button><span>Praticar case técnico</span><small>Amanhã</small></li><li><button class="check-button" aria-label="Marcar tarefa"></button><span>Atualizar LinkedIn</span><small>Sex</small></li></ul></section>
+        </aside>
+      </div>
+      <footer class="page-footer"><span>JobTrack <b>·</b> feito para buscas com intenção</span><span>v1.0 <b>·</b> <a href="https://github.com" target="_blank" rel="noreferrer">Código no GitHub ↗</a></span></footer>
+    </main>
+  </div>
+
+  <dialog class="modal" id="application-modal"><form method="dialog" id="application-form"><div class="modal-head"><div><span class="eyebrow">NOVA OPORTUNIDADE</span><h2>Adicionar candidatura</h2></div><button class="close-button" value="cancel" aria-label="Fechar">×</button></div><label>Empresa<input name="company" required placeholder="Ex: Nubank"></label><label>Cargo<input name="role" required placeholder="Ex: Frontend Engineer"></label><div class="form-row"><label>Local<input name="location" required placeholder="Remoto"></label><label>Status<select name="status"><option value="pending">Em análise</option><option value="interview">Entrevista</option><option value="offer">Oferta</option></select></label></div><label>Link da vaga <span class="optional">opcional</span><input name="url" type="url" placeholder="https://..."></label><button class="primary-button submit-button" value="default">Salvar candidatura <span>→</span></button></form></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
