@@ -23,6 +23,7 @@ mobile.css              # Ajustes dedicados para telas de até 650px
 polish.css              # Camada visual premium, microinterações e profundidade
 auth.css                # Tela de autenticação e estados mobile
 auth-fix.css            # Estados exclusivos entre login e cadastro
+notifications.css       # Painel de notificações responsivo
 app.js                  # Roteamento, interações, métricas e chatbot
 api.js                  # Repositório local que abstrai a persistência da UI
 backend/server.js       # API HTTP nativa sem dependências externas
@@ -39,6 +40,9 @@ npm start
 Depois acesse `http://localhost:3000`. Endpoints disponíveis:
 
 - `GET /api/health`
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
 - `GET /api/applications`
 - `POST /api/applications`
 - `DELETE /api/applications/:id`

@@ -184,7 +184,19 @@ document.querySelectorAll(".filter-tab").forEach((button) => button.addEventList
 $("#dashboard-search").addEventListener("input", (event) => renderApplications(event.target.value));
 $("#applications-search").addEventListener("input", (event) => renderApplications(event.target.value));
 $("#mobile-menu").addEventListener("click", () => $("#sidebar").classList.toggle("open"));
-$("#notifications-button").addEventListener("click", () => showToast("Você não tem novas notificações"));
+$("#notifications-button").addEventListener("click", () => {
+  let panel = $("#notification-popover");
+  if (!panel) {
+    panel = document.createElement("div");
+    panel.id = "notification-popover";
+    panel.className = "notification-popover";
+    panel.innerHTML = '<header><strong>Notificações</strong><span>2 novas</span></header><article class="notice-item"><i class="notice-dot"></i><div><strong>Entrevista confirmada</strong><p>Nubank respondeu. Sua conversa é dia 08/09 às 14:30.</p></div></article><article class="notice-item"><i class="notice-dot"></i><div><strong>Meta semanal em andamento</strong><p>Você já completou 7 de 10 candidaturas.</p></div></article><a class="notice-link" href="#interviews">Ver minha agenda →</a>';
+    panel.hidden = true;
+    $(".topbar-actions").appendChild(panel);
+  }
+  panel.hidden = !panel.hidden;
+});
+document.addEventListener("click", (event) => { const panel = $("#notification-popover"); if (panel && !event.target.closest(".topbar-actions")) panel.hidden = true; });
 $("#logout-button").addEventListener("click", () => {
   localStorage.removeItem("th7-jobtrack-session");
   $(".app-shell").classList.add("auth-locked");
