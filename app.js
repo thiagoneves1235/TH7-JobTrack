@@ -1,5 +1,5 @@
 const statusLabels = { interview: "Entrevista", pending: "Em análise", offer: "Oferta" };
-const titles = { dashboard: "Visão geral", applications: "Candidaturas", interviews: "Entrevistas", assistant: "Assistente IA", profile: "Meu perfil", settings: "Configurações" };
+const titles = { dashboard: "Visão geral", applications: "Candidaturas", interviews: "Entrevistas", assistant: "Assistente de carreira", profile: "Meu perfil", settings: "Configurações" };
 let activeFilter = "all";
 const $ = (selector) => document.querySelector(selector);
 const toast = $("#toast");
@@ -11,6 +11,35 @@ function showToast(message) {
 }
 
 function setAuthMessage(message = "") { $("#auth-message").textContent = message; }
+
+function applyNaturalCopy() {
+  const replacements = [
+    [".auth-quote>span", "TH7 / SUA BUSCA PROFISSIONAL"],
+    [".auth-quote h1", "Organize sua busca. Encontre seu próximo passo."],
+    [".auth-quote p", "Tenha candidaturas, entrevistas e planos no mesmo lugar."],
+    [".auth-proof strong", "6"],
+    [".auth-proof span", "candidaturas no seu radar\nnesta semana"],
+    [".auth-visual-footer", "Uma oportunidade de cada vez."],
+    [".sidebar-upgrade strong", "Seu ritmo"],
+    [".sidebar-upgrade p", "Veja o que merece atenção na sua busca esta semana."],
+    [".sidebar-upgrade a", "Ver meu plano  →"],
+    [".sidebar-footer", "Dados salvos neste navegador"],
+    [".page-footer span:first-child", "TH7 JobTrack  ·  sua busca organizada"],
+    [".ai-status", "● disponível"],
+    [".chat-head strong", "Guia de carreira"],
+    [".chat-head span", "Sugestões para sua próxima conversa"],
+    ["[data-view=assistant] .eyebrow", "APOIO À DECISÃO"],
+    ["[data-view=assistant] .subtitle", "Organize suas ideias para cada oportunidade."],
+    ["[data-view=assistant] .ai-context .eyebrow", "SEU MOMENTO"],
+    ["[data-view=assistant] .ai-context h2", "Resumo da busca"],
+    [".nav-link[data-route=assistant]", "Ajuda de carreira"]
+  ];
+  replacements.forEach(([selector, text]) => { const element = $(selector); if (element) element.textContent = text; });
+  const assistantLink = $(".nav-link[data-route=assistant]");
+  if (assistantLink) assistantLink.innerHTML = '<span class="nav-icon">✦</span>Ajuda de carreira <em>NOVO</em>';
+  const firstMessage = $("#chat-messages .message.bot");
+  if (firstMessage) firstMessage.textContent = "Olá, Marina. Posso ajudar a revisar uma candidatura, preparar uma entrevista ou organizar os próximos passos da sua busca.";
+}
 
 function unlockApp(user) {
   localStorage.setItem("th7-jobtrack-session", JSON.stringify(user));
@@ -188,4 +217,5 @@ document.addEventListener("keydown", (event) => {
 });
 restoreTasks();
 initAuth();
+applyNaturalCopy();
 setRoute();
