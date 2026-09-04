@@ -25,6 +25,20 @@
   .metric-card strong { margin-top: 14px; font-size: 28px; }
   .dashboard-grid, .dashboard-side { grid-template-columns: 1fr; }
   .applications-panel, .full-panel { padding: 18px 14px 5px; }
+  .table-wrap { overflow: visible; }
+  table { min-width: 0; }
+  table thead { display: none; }
+  table tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; gap: 3px 8px; padding: 12px 0; }
+  table td { border-top: 0; padding: 0; }
+  table td:first-child { grid-column: 1; grid-row: 1 / span 2; min-width: 0; }
+  table td:nth-child(2), table td:nth-child(4) { display: none; }
+  table td:nth-child(3) { grid-column: 2; grid-row: 1; align-self: center; }
+  table td:last-child { grid-column: 2; grid-row: 2; align-self: end; text-align: right; }
+  .company { min-width: 0; }
+  .company > div { min-width: 0; }
+  .company strong, .company span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 170px; }
+  .status { font-size: 8px; padding: 4px 6px; }
+  .row-menu { font-size: 15px; line-height: 16px; }
   .toolbar { align-items: stretch; flex-direction: column; margin: 20px 0 10px; }
   .search-box { flex-basis: auto; }
   .filter-tabs { justify-content: space-between; gap: 0; }
