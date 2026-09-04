@@ -24,7 +24,6 @@ function applyNaturalCopy() {
     [".sidebar-upgrade p", "Veja o que merece atenção na sua busca esta semana."],
     [".sidebar-upgrade a", "Ver meu plano  →"],
     [".sidebar-footer", "Dados salvos neste navegador"],
-    [".page-footer span:first-child", "TH7 JobTrack  ·  sua busca organizada"],
     [".ai-status", "● disponível"],
     [".chat-head strong", "Guia de carreira"],
     [".chat-head span", "Sugestões para sua próxima conversa"],
